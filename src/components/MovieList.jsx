@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import MovieCard from './MovieCard';
 import styles from '../styles';
 
@@ -25,6 +26,7 @@ const MovieList = ({
   openAuth,
   user,
 }) => {
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = React.useState(
     () => typeof window !== 'undefined' && window.innerWidth <= MOBILE_BREAKPOINT,
   );
@@ -178,7 +180,7 @@ const MovieList = ({
                     key={movie.id}
                     movie={movie}
                     compact={isMobile}
-                    onClick={() => window.location.assign(`/movie/${movie.id}`)}
+                    onClick={() => navigate(`/movie/${movie.id}`)}
                   />
                 ))
               ) : (
